@@ -1,0 +1,46 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+#navbar{
+    background-color: #009688;
+    height: 50px;
+}
+
+#navbar ul{
+    list-style-type: none;
+    height: inherit;
+    margin-bottom: 0%;
+    
+}
+
+#navbar li{
+    display: inline;
+    color: aliceblue;
+    font-size: 24px;
+    padding-top: 5px;
+    /* height: inherit; */
+}
+
+ #title{
+    float: left;
+}
+
+#counter{
+    float: right;
+    /* margin-right: 5%;
+    border-right: 5px solid aliceblue; */
+    padding-right: 10px;
+
+}
+
+/* #navbar li{
+    color: aliceblue;
+    margin-left: 40%;
+    margin-top: 0px;
+    font-size: 24px;
+    padding-top: 10px;
+} */

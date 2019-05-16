@@ -1,0 +1,14 @@
+{
+  "name": "elecrontest",
+  "version": "1.0.0",
+  "description": "just testting",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^4.1.4"
+  }
+}
