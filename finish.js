@@ -11,7 +11,7 @@ ipcRenderer.on("setCount",(e,...args)=>{
      if (args[0]){
           emoji.src= "https://img.icons8.com/dusk/100/000000/lol.png";
           txt.innerHTML = "You Finished Typing "+args[2]+" Words In";
-          count.innerHTML=args[1]+"s";
+          count.innerHTML=60-args[1]+"s";
 
      }else{
           emoji.src= "https://img.icons8.com/dusk/100/000000/sad.png";

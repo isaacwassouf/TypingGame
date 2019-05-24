@@ -3,14 +3,10 @@ var countProcess;
 var checkprocess;
 var alreadyRunning= false;
 
-var completeQ=[];
-var words = document.getElementById("firstTxtArea").value.split(" ");
 
 
 (function startGame(){
-    alreadyRunning= true;
-    createCounter();
-    checkSpelling();
+    newTurn();
 })();
 
 function stopGame(){
@@ -25,9 +21,9 @@ function createCounter(){
     counter.innerHTML = 60;
     let current= 60;
 
-    countProcess = setInterval(()=>{
+    countProcess = setInterval( ()=>{
         if(current == 0){
-            stopGame();
+           
             /*
             Does not make sense but trust me it does..
             You see this condition exists to prevent a race condition
@@ -35,13 +31,18 @@ function createCounter(){
             thus preventing sending two messages to the main process.
             */
             let orgTxt = document.getElementById("firstTxtArea").value;
-            let inputTxt = document.getElementById("secondTxtArea");
-
+            let inputTxt = document.getElementById("secondTxtArea").value;
+            var words= document.getElementById("firstTxtArea").value.trim().split(" ");
             if (orgTxt != inputTxt){
+                stopGame();
                 let counterValue= document.getElementById("counter").innerHTML;
-                let numOfWordsTyped= document.getElementById("secondTxtArea").value.split(" ").filter((word)=>{
-                    return word != "";
-                }).length;
+
+                let inputWords = inputTxt.trim().replace( /  +/g, ' ' ).split(" ");
+                let numOfWordsTyped= 0;
+                for(let i =0;i<inputWords.length;i++){
+                    if (inputWords[i] == words[i] )
+                        numOfWordsTyped+=1;
+                  }
                 ipcRenderer.send("stopWin",false,counterValue,numOfWordsTyped, orgTxt.split(" ").length);
             }
 
@@ -102,9 +103,20 @@ function stopCheckSpelling(){
 function newTurn(){
     if (!alreadyRunning){
         alreadyRunning= true;
+        readTxtFileSync();
         createCounter();
         checkSpelling();
     }
+}
+
+
+function readTxtFileSync(){
+    const {readFileSync} = require("fs");
+    let random= Math.floor(Math.random() * 2);
+    if (random == 0 )
+        document.getElementById("firstTxtArea").value = readFileSync("text1.txt").toString().trim();
+    else
+        document.getElementById("firstTxtArea").value = readFileSync("text2.txt").toString().trim();
 }
 
 
