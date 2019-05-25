@@ -112,11 +112,12 @@ function newTurn(){
 
 function readTxtFileSync(){
     const {readFileSync} = require("fs");
+    const path = require('path');
     let random= Math.floor(Math.random() * 2);
     if (random == 0 )
-        document.getElementById("firstTxtArea").value = readFileSync("text1.txt").toString().trim();
+        document.getElementById("firstTxtArea").value = readFileSync(path.join(__dirname, 'text1.txt')).toString().trim();
     else
-        document.getElementById("firstTxtArea").value = readFileSync("text2.txt").toString().trim();
+        document.getElementById("firstTxtArea").value = readFileSync(path.join(__dirname, 'text2.txt')).toString().trim();
 }
 
 

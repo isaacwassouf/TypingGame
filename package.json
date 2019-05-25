@@ -1,14 +1,20 @@
 {
-  "name": "elecrontest",
+  "name": "typingame",
   "version": "1.0.0",
-  "description": "just testting",
+  "description": "A game to help you enhance your typing speed",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . typingame --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"A Game to help enhance your typing speed\"",    
+    "package-linux": "electron-packager . typingame --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "electron": "^4.1.4"
+  },
+  "devDependencies": {
+    "electron-packager": "^13.1.1"
   }
 }

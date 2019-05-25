@@ -5,6 +5,8 @@ const {app,BrowserWindow,globalShortcut,Menu,MenuItem,ipcMain}= electron;
 let mainWin;
 let finishWin; 
 
+process.env.NODE_ENV= "production";
+
 app.on("ready", ()=>{
     mainWin = new BrowserWindow({width: 1000,height:617});    
     mainWin.loadFile('index.html');
@@ -39,7 +41,10 @@ app.on("ready", ()=>{
     Menu.setApplicationMenu(menu);
 });
 
-
+app.on('window-close-all', app.quit);
+app.on('before-quit', () => {
+    mainWin.removeAllListeners('close');
+})
 
 
 
