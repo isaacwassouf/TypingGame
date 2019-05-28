@@ -15,7 +15,7 @@ app.on("ready", ()=>{
         finishWin= new BrowserWindow({width:750,height: 370, resizable: false});
 
         if(!args[0])
-           finishWin.setSize(900,370);
+           finishWin.setSize(920,370);
             
         finishWin.loadFile("finish.html");
         finishWin.setMenu(null);

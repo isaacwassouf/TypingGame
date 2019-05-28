@@ -2,7 +2,10 @@
 var countProcess;
 var checkprocess;
 var alreadyRunning= false;
-
+const electron = require("electron");
+const {ipcRenderer}= electron;
+const fs = require("fs");
+const path = require('path');
 
 
 (function startGame(){
@@ -111,18 +114,19 @@ function newTurn(){
 
 
 function readTxtFileSync(){
-    const {readFileSync} = require("fs");
-    const path = require('path');
-    let random= Math.floor(Math.random() * 2);
-    if (random == 0 )
-        document.getElementById("firstTxtArea").value = readFileSync(path.join(__dirname, 'text1.txt')).toString().trim();
-    else
-        document.getElementById("firstTxtArea").value = readFileSync(path.join(__dirname, 'text2.txt')).toString().trim();
+    let files = fs.readdirSync("texts");
+    let numOfFiles = files.length;
+    // The formula : Math.floor(Math.random() * (max - min + 1)) + min;
+    let random = Math.floor(Math.random() * ((numOfFiles -1) - 0 + 1))+ 0;
+    document.getElementById("firstTxtArea").value = fs.readFileSync(path.join(__dirname, "texts/" +files[random])).toString().trim();
+    // if (random == 0 )
+    //     document.getElementById("firstTxtArea").value = fs.readFileSync(path.join(__dirname, 'texts/text1.txt')).toString().trim();
+    // else
+    //     document.getElementById("firstTxtArea").value = fs.readFileSync(path.join(__dirname, 'texts/text2.txt')).toString().trim();
 }
 
 
-const electron = require("electron");
-const {ipcRenderer}= electron;
+
 
 ipcRenderer.on("stop",(e,msg)=>{
     stopGame();
