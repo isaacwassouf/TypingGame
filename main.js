@@ -41,7 +41,7 @@ app.on("ready", ()=>{
     Menu.setApplicationMenu(menu);
 });
 
-app.on('window-close-all', app.quit);
+app.on('window-all-closed', app.quit);
 app.on('before-quit', () => {
     mainWin.removeAllListeners('close');
 })
