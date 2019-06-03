@@ -2,8 +2,7 @@
 simple electron game to help enhance your typing speed
 
 # Installation: 
-  * npm install electron --save-dev
-  * npm install electron-packager --save-dev (if you want to package the app)
+  * npm install
   
 # To run it:
   * npm start
