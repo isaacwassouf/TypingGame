@@ -12,11 +12,8 @@ app.on("ready", ()=>{
     mainWin.loadFile('index.html');
 
     ipcMain.on("stopWin",(e,...args)=>{
-        finishWin= new BrowserWindow({width:750,height: 370, resizable: false});
-
-        if(!args[0])
-           finishWin.setSize(920,370);
-            
+        finishWin= new BrowserWindow({width:500,height: 370, resizable: false, fullscreen: false});
+                    
         finishWin.loadFile("finish.html");
         finishWin.setMenu(null);
 

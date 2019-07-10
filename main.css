@@ -1,6 +1,8 @@
 
-body{
+html,body{
     font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    width: 100%;
     margin: 0px;
     padding: 0px;
 }
@@ -22,7 +24,10 @@ body{
     color: aliceblue;
     font-size: 24px;
     padding-top: 5px;
-    /* height: inherit; */
+}
+
+.area{
+    height: calc(100% - 50px);
 }
 
  #title{
@@ -31,16 +36,13 @@ body{
 
 #counter{
     float: right;
-    /* margin-right: 5%;
-    border-right: 5px solid aliceblue; */
     padding-right: 10px;
-
 }
 
-/* #navbar li{
-    color: aliceblue;
-    margin-left: 40%;
-    margin-top: 0px;
-    font-size: 24px;
-    padding-top: 10px;
-} */
+#firstTxtArea{
+    height: 50%;
+}
+
+#secondTxtArea{
+    height: 50%;
+}
