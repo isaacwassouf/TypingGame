@@ -1,4 +1,5 @@
 const electron = require('electron');
+const path = require("path");
 
 const {app,BrowserWindow,globalShortcut,Menu,MenuItem,ipcMain}= electron;
 
@@ -9,12 +10,14 @@ process.env.NODE_ENV= "production";
 
 app.on("ready", ()=>{
     mainWin = new BrowserWindow({width: 1000,height:617});    
-    mainWin.loadFile('index.html');
+    let filePath = path.join(__dirname,'html','index.html')
+    mainWin.loadFile(filePath);
 
     ipcMain.on("stopWin",(e,...args)=>{
         finishWin= new BrowserWindow({width:500,height: 370, resizable: false, fullscreen: false});
-                    
-        finishWin.loadFile("finish.html");
+              
+        let filePath = path.join(__dirname,'html','finish.html')
+        finishWin.loadFile(filePath);
         finishWin.setMenu(null);
 
         finishWin.webContents.on("dom-ready",()=>{

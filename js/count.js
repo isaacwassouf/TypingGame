@@ -114,12 +114,12 @@ function newTurn(){
 
 
 function readTxtFileSync(){
-    let files = fs.readdirSync(path.join(__dirname, "assets/texts"))
+    let files = fs.readdirSync(path.join(__dirname,'..',"assets/texts"))
         .filter((file)=> path.extname(file) === '.txt' );
     let numOfFiles = files.length;
     // The formula : Math.floor(Math.random() * (max - min + 1)) + min;
     let random = Math.floor(Math.random() * ((numOfFiles -1) - 0 + 1))+ 0;
-    document.getElementById("firstTxtArea").value = fs.readFileSync(path.join(__dirname, "assets/texts/" +files[random]))
+    document.getElementById("firstTxtArea").value = fs.readFileSync(path.join(__dirname,'..',"assets/texts/" +files[random]))
         .toString().replace(/(\r\n|\n|\r)/gm, " ").replace( /  +/g, ' ' ).trim();
 }
 
